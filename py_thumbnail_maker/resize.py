@@ -16,7 +16,7 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
     elif img_ex == "svg":
         img = Image.open(f"src/imgs{dist_path}/{img_name}.png",).convert("RGB")
     elif img_ex == "psd":
-        img = Image.open(img_path, formats="psd")
+        img = Image.open(img_path)
     else:
         img = Image.open(img_path)
     img_w = img.width
