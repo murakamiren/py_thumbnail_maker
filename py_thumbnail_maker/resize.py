@@ -2,8 +2,11 @@ from PIL import Image
 
 base_dist = "dist"
 
-def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_quality: int):
-    img = Image.open(img_path)
+def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_quality: int, img_ex: str):
+    if img_ex == "png":
+        img = Image.open(img_path).convert("RGB")
+    else:
+        img = Image.open(img_path)
     img_w = img.width
     img_h = img.height
     resize_raito = w / img_w
