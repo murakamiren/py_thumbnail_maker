@@ -14,6 +14,8 @@ def run():
         handleExists(isExists, p)
         if list["img_ex"] == "ai":
             print("ai file detected")
+        elif list["img_ex"] == "psd":
+            print("psd")
         else:
             resize_img(list["base_path"], list["img_name"], 300, list["format_path"], 90, list["img_ex"])
 
