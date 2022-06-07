@@ -6,6 +6,7 @@ authors = ["renmurakami <autoeyy@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+Pillow = "^9.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

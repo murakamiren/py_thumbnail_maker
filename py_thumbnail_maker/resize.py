@@ -1,4 +1,3 @@
-from statistics import quantiles
 from PIL import Image
 
 def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_quality: int):
