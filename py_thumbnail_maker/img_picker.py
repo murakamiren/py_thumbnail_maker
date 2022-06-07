@@ -1,6 +1,8 @@
 import glob
 import os
 
+from path_to_img_info import path_to_img_info
+
 base_path = "src/imgs"
 
 def img_picker():
@@ -9,4 +11,5 @@ def img_picker():
     for f in l:
         if os.path.isfile(f):
             img_list.append(f)
-    return img_list
+    formatted_img_path = path_to_img_info(img_list)
+    return formatted_img_path
