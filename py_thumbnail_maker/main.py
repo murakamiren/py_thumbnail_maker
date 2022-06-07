@@ -1,3 +1,4 @@
+from img_picker import img_picker
 from resize import resize_img
 
 
@@ -10,4 +11,9 @@ imgPath = f"{baseImgPath}/{imgName}.{imgEx}"
 
 distPath = "dist"
 
+img_list = img_picker()
+
+print(img_list)
+
 resize_img(imgPath, imgName, 300, distPath, 90)
+
