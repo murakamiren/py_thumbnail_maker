@@ -18,7 +18,7 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
     elif img_ex == "psd":
         psd_format(img_path, dist_path, img_name)
 
-    # png files are RGBA so it need to convert RGB to save image as jpg
+    # png files are RGBA so they need to convert RGB to save image as jpg
     if img_ex == "png":
         img = Image.open(img_path).convert("RGB")
     elif img_ex == "svg":
