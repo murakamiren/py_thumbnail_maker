@@ -5,6 +5,7 @@ from reportlab.graphics import renderPM
 
 base_dist = "dist"
 
+# psd to png
 def psd_format(path, dist_path, img_name):
     p = PSDImage.open(path)
     p.composite().save(f"src/imgs{dist_path}/{img_name}.png")
