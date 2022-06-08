@@ -5,7 +5,7 @@
 
 ## 対応フォーマット
 
-確認済み: jpg/png/svg/psd
+確認済み: jpg/png/svg/psd/ai
 <br>
 後は PIL の対応フォーマットはいける(はず)
 <br>
