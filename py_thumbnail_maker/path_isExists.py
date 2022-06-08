@@ -7,6 +7,12 @@ def distDirExist():
         os.mkdir("dist")
         print("make dist dir")
 
+def makeCopyDir(copy_path):
+    isExist = os.path.exists(copy_path)
+    if not isExist:
+        os.makedirs(copy_path)
+        print(f"make copy dir {copy_path}")
+
 # if the dir dose not exist, make the dir
 def handleExists(isExist, p):
     if not isExist:
