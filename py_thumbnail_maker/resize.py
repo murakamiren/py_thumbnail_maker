@@ -1,11 +1,13 @@
 from PIL import Image
+from psd_tools import PSDImage
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 
 base_dist = "dist"
 
-def psd_format():
-    a = a
+def psd_format(path, dist_path, img_name):
+    p = PSDImage.open(path)
+    p.composite().save(f"src/imgs{dist_path}/{img_name}.png")
 
 def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_quality: int, img_ex: str):
     if img_ex == "svg":
