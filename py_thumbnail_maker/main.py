@@ -2,7 +2,7 @@ import os
 import time
 from img_picker import img_picker
 from py_thumbnail_maker.ai_to_pdf import ai_to_pdf
-from py_thumbnail_maker.path_isExists import distDirExist, handleExists, makeCopyDir, makeSrcCopy
+from py_thumbnail_maker.path_isExists import distDirExist, handleExists, makeSrcCopy
 from resize import resize_img
 
 time_start = time.perf_counter()
