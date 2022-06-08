@@ -5,12 +5,14 @@ from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 from pdf2image import convert_from_path
 
+from py_thumbnail_maker.path_isExists import makeCopyDir
+
 base_dist = "dist"
 
 # pdf to png
 def pdf_format(dist_path, img_name):
     print("pdf file convert into png...")
-    i = convert_from_path(f"src/copy{dist_path}/{img_name}.pdf")
+    i = convert_from_path(f"src/copy{dist_path}/ai_to_pdf/{img_name}.pdf")
     i[0].save(f"src/copy{dist_path}/{img_name}.png")
     print("convert done!")
 
@@ -18,7 +20,8 @@ def pdf_format(dist_path, img_name):
 def psd_format(path, dist_path, img_name):
     print("psd file convert into png...")
     p = PSDImage.open(path)
-    p.composite().save(f"src/imgs{dist_path}/{img_name}.png")
+    makeCopyDir(f"src/copy{dist_path}")
+    p.composite().save(f"src/copy{dist_path}/{img_name}.png")
     print("convert done!")
 
 def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_quality: int, img_ex: str):
@@ -26,7 +29,8 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
     if img_ex == "svg":
         print("svg file convert into png...")
         drawing = svg2rlg(img_path)
-        renderPM.drawToFile(drawing, f"src/imgs{dist_path}/{img_name}.png", fmt="PNG")
+        makeCopyDir(f"src/copy{dist_path}")
+        renderPM.drawToFile(drawing, f"src/copy{dist_path}/{img_name}.png", fmt="PNG")
     elif img_ex == "psd":
         psd_format(img_path, dist_path, img_name)
     elif img_ex == "ai":
@@ -39,15 +43,15 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
         print("convert done! imported this file as img to resize")
     elif img_ex == "svg":
         print("png file convert into RGB...")
-        img = Image.open(f"src/imgs{dist_path}/{img_name}.png",).convert("RGB")
+        img = Image.open(f"src/copy{dist_path}/{img_name}.png",).convert("RGB")
         print("convert done! imported this file as img to resize")
     elif img_ex == "psd":
         print("png file convert into RGB...")
-        img = Image.open(f"src/imgs{dist_path}/{img_name}.png",).convert("RGB")
+        img = Image.open(f"src/copy{dist_path}/{img_name}.png",).convert("RGB")
         print("convert done! imported this file as img to resize")
     elif img_ex == "ai":
         print("png file convert into RGB...")
-        img = Image.open(f"src/copy{dist_path}/ai_to_pdf/{img_name}.png",).convert("RGB")
+        img = Image.open(f"src/copy{dist_path}/{img_name}.png",).convert("RGB")
         print("convert done! imported this file as img to resize")
     else:
         print("normal file import...")

@@ -13,6 +13,12 @@ def makeCopyDir(copy_path):
         os.makedirs(copy_path, exist_ok=True)
         print(f"make copy dir {copy_path}")
 
+def makeSrcCopy():
+    isExist = os.path.exists("src/copy")
+    if not isExist:
+        os.makedirs("src/copy", exist_ok=True)
+        print("make src/copy")
+
 # if the dir dose not exist, make the dir
 def handleExists(isExist, p):
     if not isExist:
