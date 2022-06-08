@@ -4,13 +4,14 @@ from img_picker import img_picker
 from py_thumbnail_maker.path_isExists import distDirExist, handleExists
 from resize import resize_img
 
-time_start = time.time()
+time_start = time.perf_counter()
 img_list = img_picker()
 
 print(img_list)
 
 def run():
     distDirExist()
+
     for list in img_list:
         p = list["format_path"]
         isExists = os.path.exists(f"dist{p}")
@@ -19,8 +20,9 @@ def run():
             print("ai file detected")
         else:
             resize_img(list["base_path"], list["img_name"], 300, list["format_path"], 90, list["img_ex"])
-    time_end = time.time()
-    processing_time = time_end - time_start
+
+    time_end = time.perf_counter()
+    processing_time = round(time_end - time_start, 2)
     print(f"all resize done! processing time: {processing_time}")
 
 
