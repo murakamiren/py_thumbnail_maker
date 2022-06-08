@@ -1,4 +1,5 @@
 /.venv/
 /src/imgs/
+/src/copy/
 /dist/
 /py_thumbnail_maker/__pycache__/

@@ -1,3 +1,4 @@
+from pathlib import Path
 from PIL import Image
 from psd_tools import PSDImage
 from svglib.svglib import svg2rlg
@@ -9,8 +10,9 @@ base_dist = "dist"
 # pdf to png
 def pdf_format(dist_path, img_name):
     print("pdf file convert into png...")
-    i = convert_from_path(f"{dist_path}/{img_name}.pdf")
-    i[0].save(f"{dist_path}/{img_name}.png")
+    i = convert_from_path(f"src/copy{dist_path}/{img_name}.pdf")
+    i[0].save(f"src/copy{dist_path}/{img_name}.png")
+    print("convert done!")
 
 # psd to png
 def psd_format(path, dist_path, img_name):
@@ -27,8 +29,8 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
         renderPM.drawToFile(drawing, f"src/imgs{dist_path}/{img_name}.png", fmt="PNG")
     elif img_ex == "psd":
         psd_format(img_path, dist_path, img_name)
-    elif img_ex == "ai" or img_ex == "pdf":
-        pdf_format(f"src/imgs{dist_path}/ai_to_pdf", img_name)
+    elif img_ex == "ai":
+        pdf_format(dist_path, img_name)
 
     # png files are RGBA so they need to convert from RGB to save image as jpg
     if img_ex == "png":
@@ -43,9 +45,9 @@ def resize_img(img_path: str, img_name: str, w: int, dist_path: str, resize_qual
         print("png file convert into RGB...")
         img = Image.open(f"src/imgs{dist_path}/{img_name}.png",).convert("RGB")
         print("convert done! imported this file as img to resize")
-    elif img_ex == "ai" or img_ex == "pdf":
+    elif img_ex == "ai":
         print("png file convert into RGB...")
-        img = Image.open(f"src/imgs{dist_path}/ai_to_pdf/{img_name}.png",).convert("RGB")
+        img = Image.open(f"src/copy{dist_path}/ai_to_pdf/{img_name}.png",).convert("RGB")
         print("convert done! imported this file as img to resize")
     else:
         print("normal file import...")

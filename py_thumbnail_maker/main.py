@@ -20,6 +20,9 @@ def run():
         if list["img_ex"] == "ai":
             print("ai file detected")
             ai_to_pdf(list["base_path"], list["format_path"], list["img_name"])
+        elif list["img_ex"] == "pdf":
+            print("raw pdf detected")
+            continue
         resize_img(list["base_path"], list["img_name"], 300, list["format_path"], 90, list["img_ex"])
 
     time_end = time.perf_counter()
